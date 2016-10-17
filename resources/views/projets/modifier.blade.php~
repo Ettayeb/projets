@@ -18,7 +18,10 @@
 	'method' => 'POST'
 ]) !!}
 
+
 @if (count($clients))
+<div class="form-group">
+    {!! Form::label('clients', 'Client :', ['class' => 'control-label']) !!} </br>
 <select name="clients">
 <option value=""> sélectionner un client</option>
 @foreach($clients as $client)
@@ -32,13 +35,14 @@
 
 @endforeach
 </select>
+</div>
 @else 
 <h4> pas de clients !</h4>
 @endif
 
 
 <div class="form-group">
-    {!! Form::label('ldescription', 'Description:', ['class' => 'control-label']) !!}
+    {!! Form::label('description', 'Description:', ['class' => 'control-label']) !!}
     {!! Form::text('description', $p->description , ['class' => 'form-control']) !!}
     {!! Form::hidden('id', $p->id , ['class' => 'form-control']) !!}
 </div>
@@ -46,6 +50,7 @@
 <!-- produits -->
 
 @if(isset($pp))
+<div class="form-group">
 <table class="table table-condensed">
 <tr>
 <td> Nom de produit utilisé </td>
@@ -58,6 +63,7 @@
 </tr>
 @endfor
 </table>
+<div class="form-group">
 @endif
 
 @if (count($produits))
@@ -71,13 +77,15 @@
 
 @endforeach
 </select>
+</br></br>
     {!! Form::label('l6', 'Quantité :', ['class' => 'control-label']) !!}
     <input type='number' name='retraitsquantite[]' class='form-control'>
     {!! Form::hidden('type','retraits', ['class' => 'form-control']) !!}
 </div>
+</br>
     {!! Form::button('Ajouter une autre produit', ['class' => 'btn btn-success ret']) !!}
 
-
+</br></br>
 @else 
 <h4> pas de produits !</h4>
 @endif
@@ -99,7 +107,6 @@
             </div>
         </div>
 </div>
-
 
 @endforeach
 

@@ -16,6 +16,7 @@
 ]) !!}
 
 @if (count($clients))
+<div class="form-group">
 <select name="clients">
 <option selected=selected> sélectionner un client</option>
 @foreach($clients as $client)
@@ -24,6 +25,7 @@
 
 @endforeach
 </select>
+</div>
 @else 
 <h4> pas de clients !</h4>
 @endif
@@ -46,12 +48,16 @@
 
 @endforeach
 </select>
+</br></br>
     {!! Form::label('l6', 'Quantité :', ['class' => 'control-label']) !!}
+</br>
     <input type='number' name='retraitsquantite[]' class='form-control'>
     {!! Form::hidden('type','retraits', ['class' => 'form-control']) !!}
 </div>
+</br>
     {!! Form::button('Ajouter une autre produit', ['class' => 'btn btn-success ret']) !!}
-
+</br>
+</br>
 
 @else 
 <h4> pas de produits !</h4>

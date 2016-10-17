@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => ['auth']], function () {
 
 	// GET
 Route::get('projets/',[ 'as' => 'projets.index' , 'uses' => 'ProjetController@index']);
@@ -25,3 +26,24 @@ Route::get('projets/afficher/{id}',[ 'as' => 'projets.afficher' , 'uses' => 'Pro
 	// POST
 Route::post('projets/add',[ 'as' => 'projets.addprojet' , 'uses' => 'ProjetController@addprojet']);
 Route::post('projets/modifier/',[ 'as' => 'projets.modifier' , 'uses' => 'ProjetController@edit']);
+
+
+//GET
+Route::get('produit/add',[ 'as' => 'produit.add' , 'uses' => 'ProduitController@showaddform']);
+Route::get('produit',[ 'as' => 'produit.index' , 'uses' => 'ProduitController@index']);
+Route::get('produit/modifier/{id}',[ 'as' => 'produit.modifier' , 'uses' => 'ProduitController@showmodifier']);
+Route::get('produit/supprimer/{id}',[ 'as' => 'produit.supprimer' , 'uses' => 'ProduitController@destroy']);
+Route::get('statics',[ 'as' => 'statics.index' , 'uses' => 'ProduitController@statics']);
+
+
+//POST
+Route::post('produit/add',[ 'as' => 'produit.add' , 'uses' => 'ProduitController@add']);
+Route::post('produit',[ 'as' => 'produit.modifier' , 'uses' => 'ProduitController@edit']);
+Route::post('produit/quantite',[ 'as' => 'produit.operation' , 'uses' => 'ProduitController@operation']);
+Route::post('statics',[ 'as' => 'statics.index' , 'uses' => 'ProduitController@showstatics']);
+
+});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

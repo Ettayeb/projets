@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-
+<a href={{url('projets/add')}} class="btn btn-success pull-right">Ajouter un projet</a>
+</br></br>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))
@@ -43,7 +44,7 @@
 @endif
     <!--  simple view ends here   -->
 
-<a href={{url('projets/add')}} class="btn btn-success">Ajouter un projet</a>
+
 
 {!! $projets->render() !!}
  
