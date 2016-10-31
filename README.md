@@ -1,3 +1,9 @@
-# gest_projets
-# g_projet
-# projets
+# small_erp
+Laravel 5.x
+
+this small project contain :
+  -Project management
+  -Products management
+  -Statics
+  
+  
